@@ -43,12 +43,12 @@
               <div class="flex gap-[10px]">
                 <button
                   @click="confirmDel = false"
-                  class="w-[88px] rounded-lg bg-white py-2 text-sm text-[#2d2d2d] transition"
+                  class="hover-btn-false w-[88px] rounded-lg bg-white py-2 text-sm text-[#2d2d2d] transition"
                 >
                   Отмена
                 </button>
                 <button
-                  class="w-[112px] rounded-lg bg-[#fa7272] py-2 text-sm text-white transition hover:shadow-xl hover:shadow-[#fa7272]"
+                  class="hover-btn-true w-[112px] rounded-lg bg-[#fa7272] py-2 text-sm text-white transition hover:shadow-[#fa7272]"
                 >
                   Подтвердить
                 </button>
@@ -95,6 +95,14 @@ onBeforeUnmount(() => {
 <style scoped>
 .bg-style {
   background: rgba(38, 38, 38, 0.9);
+}
+
+.hover-btn-true:hover {
+  box-shadow: 0 1px 11px 0px #fa7272;
+}
+
+.hover-btn-false:hover {
+  box-shadow: 0 1px 11px 0px #ffffff;
 }
 
 input::-webkit-outer-spin-button,
