@@ -2,28 +2,28 @@
 	<div id="tovarBlock"
 			 class="relative h-[500px] w-[525px] overflow-hidden rounded-xl border border-[#4d4d4d] bg-[#262626]">
 		<table @dragover.prevent>
-			<tr v-for="row in 5"
-					:key="row">
-				<td v-for="col in 5"
-						:key="col"
+			<tr v-for="(_, rowIndex) in 5"
+					:key="rowIndex">
+				<td v-for="(_, colIndex) in 5"
+						:key="colIndex"
 						:class="{
-							'drag-over': dragOverIndex === (row - 1) * 5 + (col - 1),
-							dragging: draggingIndex === (row - 1) * 5 + (col - 1)
+							'drag-over': dragOverIndex === (rowIndex * 5 + colIndex),
+							dragging: draggingIndex === (rowIndex * 5 + colIndex)
 						}"
 						class="h-[100px] w-[105px] cursor-pointer border border-[#4d4d4d]"
 						draggable="true"
 						@dragover.prevent
-						@drop="onDrop((row - 1) * 5 + (col - 1))"
-						@dragenter="onDragEnter((row - 1) * 5 + (col - 1))"
-						@dragleave="onDragLeave((row - 1) * 5 + (col - 1))"
-						@dragstart="startDrag((row - 1) * 5 + (col - 1))"
+						@drop="onDrop(rowIndex * 5 + colIndex)"
+						@dragenter="onDragEnter(rowIndex * 5 + colIndex)"
+						@dragleave="onDragLeave(rowIndex * 5 + colIndex)"
+						@dragstart="startDrag(rowIndex * 5 + colIndex)"
 						@dragend="endDrag">
-					<TovarItemBlock v-if="items[(row - 1) * 5 + (col - 1)]"
-													:item="items[(row - 1) * 5 + (col - 1)]"
+					<TovarItemBlock v-if="items[rowIndex * 5 + colIndex]"
+													:item="items[rowIndex * 5 + colIndex]"
 													:visibleInfo="visibleInfo"
 													:activeItem="activeItem"
 													:closeInfo="closeInfo"
-													:openInfo="() => onOpenInfo(items[(row - 1) * 5 + (col - 1)])"
+													:openInfo="() => onOpenInfo(items[rowIndex * 5 + colIndex])"
 													@deleteItem="deleteItem" />
 				</td>
 			</tr>
@@ -35,16 +35,11 @@
 import TovarItemBlock from '@/components/TovarItemBlock.vue'
 import { ref, onMounted, watch } from 'vue'
 
-const defaultItems = new Array(25).fill(null).map((_, index) => {
-	if (index === 0) return { id: 1, color: '#7faa65', count: 4 }
-	if (index === 1) return { id: 2, color: '#aa9765', count: 2 }
-	if (index === 2) return { id: 3, color: '#656caa', count: 5 }
-	return null
+const props = defineProps({
+	items: Array
 })
 
-const loadItems = () => JSON.parse(localStorage.getItem('tovarItems')) || defaultItems
-
-const items = ref(loadItems())
+const items = ref(props.items)
 const visibleInfo = ref(false)
 const activeItem = ref({})
 const draggingIndex = ref(null)
@@ -120,7 +115,7 @@ watch(
 )
 
 onMounted(() => {
-	items.value = loadItems()
+	items.value = props.items
 })
 </script>
 
