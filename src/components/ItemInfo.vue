@@ -12,7 +12,7 @@
 										 :color="props.item.color"
 										 position="15px"
 										 class="mt-[70px]" />
-					<div class="mt-[30px] border-y border-[#4d4d4d] pb-6 pt-3">
+					<div class="mt-[30px] border-y dark:border-[#4d4d4d] border-neutral-400 pb-6 pt-3">
 						<SkeletonItem width="211px"
 													height="30px"
 													borderRadius="8px" />

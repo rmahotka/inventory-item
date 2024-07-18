@@ -10,7 +10,7 @@
 							 :color="item.color"
 							 position="6px" />
 		<p
-			 class="absolute bottom-0 right-0 h-4 w-4 rounded-tl-md border border-[#4d4d4d] bg-[#262626] text-center text-[10px] text-white opacity-40">
+			 class="absolute bottom-0 right-0 h-4 w-4 rounded-tl-md border border-[#4d4d4d] dark:bg-[#262626] text-center text-[10px] dark:text-white dark:opacity-40 opacity-60">
 			{{ item.count }}
 		</p>
 	</div>
