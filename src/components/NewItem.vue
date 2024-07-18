@@ -1,7 +1,7 @@
 <template>
 	<button @click="isOpen = true"
 					class="dark:bg-[#262626] dark:text-white text-[#262626] py-2 px-5 rounded-lg border transition bg-neutral-100 dark:border-[#4d4d4d] border-neutral-400 dark:hover:bg-[#444] hover:bg-neutral-200">
-		Добавить товар
+		{{ $t('addItem') }}
 	</button>
 	<Teleport to="body">
 		<transition>
@@ -12,31 +12,19 @@
 					<div class="relative p-7 flex flex-col gap-2">
 						<CloseIcon @click="isOpen = false"
 											 class="absolute top-1 right-1 cursor-pointer  fill-black dark:fill-white" />
-						<div class="
-											 flex
-											 flex-col">
-							<label for="count"
-										 class="dark:text-white dark:opacity-40 text-black">Количество</label>
-							<input type="number"
-										 placeholder="Количество"
-										 id="count"
-										 v-model="count"
-										 class="h-9 w-[210px] rounded-[4px] border dark:border-[#4d4d4d] dark:bg-[#262626] pl-3 text-sm font-medium dark:text-white dark:opacity-40 text-black">
-						</div>
-						<div class="
-								 flex
-								 flex-col">
-							<label for="count"
-										 class="dark:text-white dark:opacity-40 text-black">Цвет</label>
-							<input type="text"
-										 placeholder="Цвет"
-										 id="count"
-										 v-model="color"
-										 class="h-9 w-[210px] rounded-[4px] border dark:border-[#4d4d4d] dark:bg-[#262626] pl-3 text-sm font-medium dark:text-white dark:opacity-40 text-black">
-						</div>
+						<input type="number"
+									 :placeholder="$t('count')"
+									 id="count"
+									 v-model="count"
+									 class="h-9 w-[210px] rounded-[4px] border dark:border-[#4d4d4d] dark:bg-[#262626] pl-3 text-sm font-medium dark:text-white dark:opacity-40 text-black">
+						<input type="text"
+									 :placeholder="$t('color')"
+									 id="count"
+									 v-model="color"
+									 class="h-9 w-[210px] rounded-[4px] border dark:border-[#4d4d4d] dark:bg-[#262626] pl-3 text-sm font-medium dark:text-white dark:opacity-40 text-black">
 						<button @click="addNewItem"
 										class="bg-[#7faa65] rounded-[4px] py-1 datk:text-[#262626] text-neutral-50 hover:bg-[#7fb161]">
-							Добавить
+							{{ $t('addItem') }}
 						</button>
 					</div>
 				</div>

@@ -37,23 +37,23 @@
 					<button @click="confirmDel = true"
 									v-if="!confirmDel"
 									class="input-style my-[18px] h-[39px] w-[220px] rounded-lg bg-[#fa7272] text-white transition hover:bg-[#f88]">
-						Удалить предмет
+						{{ $t('delete') }}
 					</button>
 					<transition name="modalDel">
 						<div v-if="confirmDel"
 								 class="absolute bottom-0 right-0 flex w-[250px] flex-col items-center border-l border-t border-[#4d4d4d] dark:bg-[#262626] py-5 bg-neutral-100">
 							<input v-model="countDel"
 										 type="number"
-										 placeholder="Введите количество"
+										 :placeholder="$t('count')"
 										 class="mb-5 h-10 w-[210px] rounded-[4px] border dark:border-[#4d4d4d] dark:bg-[#262626] pl-3 text-sm font-medium dark:text-white dark:opacity-40 text-black" />
 							<div class="flex gap-[10px]">
 								<button @click="confirmDel = false"
 												class="hover-btn-false w-[88px] rounded-lg bg-white py-2 text-sm text-[#2d2d2d] transition border-neutral-300 border dark:border-0">
-									Отмена
+									{{ $t('сancel') }}
 								</button>
 								<button @click="deleteItem"
 												class="hover-btn-true w-[112px] rounded-lg bg-[#fa7272] py-2 text-sm text-white transition hover:shadow-[#fa7272]">
-									Подтвердить
+									{{ $t('сonfirm') }}
 								</button>
 							</div>
 						</div>

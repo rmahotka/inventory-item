@@ -3,10 +3,24 @@
 		<div class="mx-auto w-[787px] py-8">
 			<div class="flex justify-between mb-6">
 				<NewItem @addNewItem="addNewItem" />
-				<button @click="toggleDark()"
-								class="dark:bg-[#262626] dark:text-white bg-neutral-100 text-black rounded-lg border transition dark:border-[#4d4d4d] border-neutral-400 hover:dark:bg-[#444] p-3 hover:bg-neutral-200">
-					<component :is="iconTheme" />
-				</button>
+				<div class="flex gap-4">
+					<div>
+						<button v-if="$i18n.locale === 'RU'"
+										@click="$i18n.locale = `EN`"
+										class="dark:bg-[#262626] dark:text-white bg-neutral-100 text-black rounded-lg border transition dark:border-[#4d4d4d] border-neutral-400 hover:dark:bg-[#444] p-3 hover:bg-neutral-200">
+							EN
+						</button>
+						<button v-else
+										@click="$i18n.locale = `RU`"
+										class="dark:bg-[#262626] dark:text-white bg-neutral-100 text-black rounded-lg border transition dark:border-[#4d4d4d] border-neutral-400 hover:dark:bg-[#444] p-3 hover:bg-neutral-200">
+							RU
+						</button>
+					</div>
+					<button @click="toggleDark()"
+									class="dark:bg-[#262626] dark:text-white bg-neutral-100 text-black rounded-lg border transition dark:border-[#4d4d4d] border-neutral-400 hover:dark:bg-[#444] p-3 hover:bg-neutral-200">
+						<component :is="iconTheme" />
+					</button>
+				</div>
 			</div>
 			<div class="mb-6 flex gap-6">
 				<AsideMenu />
