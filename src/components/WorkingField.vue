@@ -1,6 +1,6 @@
 <template>
 	<div id="tovarBlock"
-			 class="relative h-[500px] w-[525px] overflow-hidden rounded-xl border border-[#4d4d4d] bg-[#262626]">
+			 class="relative h-[500px] w-[525px] overflow-hidden rounded-xl border dark:border-[#4d4d4d] dark:bg-[#262626] border-neutral-400 bg-neutral-100">
 		<table @dragover.prevent>
 			<tr v-for="(_, rowIndex) in 5"
 					:key="rowIndex">
@@ -10,7 +10,7 @@
 							'drag-over': dragOverIndex === (rowIndex * 5 + colIndex),
 							dragging: draggingIndex === (rowIndex * 5 + colIndex)
 						}"
-						class="h-[100px] w-[105px] cursor-pointer border border-[#4d4d4d]"
+						class="h-[100px] w-[105px] cursor-pointer border dark:border-[#4d4d4d] border-neutral-400"
 						draggable="true"
 						@dragover.prevent
 						@drop="onDrop(rowIndex * 5 + colIndex)"
@@ -124,7 +124,11 @@ onMounted(() => {
 	opacity: 0.4;
 }
 
-.drag-over {
+.dark .drag-over {
 	background-color: #333;
+}
+
+.drag-over {
+	background-color: #c2c2c2;
 }
 </style>

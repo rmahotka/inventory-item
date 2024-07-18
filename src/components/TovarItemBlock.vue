@@ -4,7 +4,7 @@
 						@closeBlock="closeInfo"
 						@deleteItem="deleteItem" />
 	<div @click="openInfo"
-			 class="relative flex h-full w-full items-center justify-center transition duration-150 hover:bg-[#2f2f2f]">
+			 class="relative flex h-full w-full items-center justify-center transition duration-150 dark:hover:bg-[#2f2f2f] hover:bg-neutral-200">
 		<TovarItem width="48px"
 							 height="48px"
 							 :color="item.color"

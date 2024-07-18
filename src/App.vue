@@ -1,7 +1,13 @@
 <template>
-	<div class="flex h-screen items-center justify-center bg-[#1D1D1D]">
+	<div class="flex h-screen items-center justify-center dark:bg-[#1D1D1D] bg-neutral-50">
 		<div class="mx-auto w-[787px] py-8">
-			<NewItem @addNewItem="addNewItem" />
+			<div class="flex justify-between mb-6">
+				<NewItem @addNewItem="addNewItem" />
+				<button @click="toggleDark()"
+								class="dark:bg-[#262626] dark:text-white bg-neutral-100 text-black rounded-lg border transition dark:border-[#4d4d4d] border-neutral-400 hover:dark:bg-[#444] p-3 hover:bg-neutral-200">
+					<component :is="iconTheme" />
+				</button>
+			</div>
 			<div class="mb-6 flex gap-6">
 				<AsideMenu />
 				<WorkingField :items="items" />
@@ -16,8 +22,17 @@ import AsideMenu from '@/components/AsideMenu.vue'
 import WorkingField from '@/components/WorkingField.vue'
 import FooterItem from '@/components/FooterItem.vue'
 import NewItem from '@/components/NewItem.vue';
-import { ref, watch } from 'vue';
+import SunIcon from '@/components/icon/SunIcon.vue'
+import MoonIcon from '@/components/icon/MoonIcon.vue'
+import { computed, ref, watch } from 'vue';
+import { useDark, useToggle } from '@vueuse/core'
 
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+
+const iconTheme = computed(() => {
+	return isDark.value ? SunIcon : MoonIcon
+})
 
 const items = ref([])
 

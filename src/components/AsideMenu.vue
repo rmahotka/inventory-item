@@ -1,6 +1,6 @@
 <template>
 	<div
-			 class="flex h-[500px] w-[236px] flex-col items-center justify-center rounded-xl border border-[#4D4D4D] bg-[#262626] px-[14px] pb-6 pt-[18px]">
+			 class="flex h-[500px] w-[236px] flex-col items-center justify-center rounded-xl border border-neutral-400 dark:border-[#4D4D4D] dark:bg-[#262626] px-[14px] pb-6 pt-[18px] bg-neutral-100">
 		<img src="@/assets/img/ImgBlur.png"
 				 alt=""
 				 class="h-[240px] w-[208px]" />

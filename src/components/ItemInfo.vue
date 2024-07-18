@@ -4,9 +4,9 @@
 			<div v-show="isVisible"
 					 class="absolute right-0 top-0 z-10 block">
 				<div
-						 class="bg-style relative flex h-[500px] w-[250px] flex-col items-center rounded-r-xl border-l border-[#4d4d4d] px-[15px]">
-					<CloseIcon class="absolute right-2 top-2 cursor-pointer"
-										 @click="closeBlock" />
+						 class="dark:bg-[#262626e6] bg-neutral-100 relative flex h-[500px] w-[250px] flex-col items-center rounded-r-xl border-l dark:border-[#4d4d4d] px-[15px] border-neutral-400">
+					<CloseIcon @click="closeBlock"
+										 class="absolute right-2 top-2 cursor-pointer fill-black dark:fill-white" />
 					<TovarItem width="115px"
 										 height="115px"
 										 :color="props.item.color"
@@ -41,14 +41,14 @@
 					</button>
 					<transition name="modalDel">
 						<div v-if="confirmDel"
-								 class="absolute bottom-0 right-0 flex w-[250px] flex-col items-center border-l border-t border-[#4d4d4d] bg-[#262626] py-5">
+								 class="absolute bottom-0 right-0 flex w-[250px] flex-col items-center border-l border-t border-[#4d4d4d] dark:bg-[#262626] py-5 bg-neutral-100">
 							<input v-model="countDel"
 										 type="number"
 										 placeholder="Введите количество"
-										 class="mb-5 h-10 w-[210px] rounded-[4px] border border-[#4d4d4d] bg-[#262626] pl-3 text-sm font-medium text-white opacity-40" />
+										 class="mb-5 h-10 w-[210px] rounded-[4px] border dark:border-[#4d4d4d] dark:bg-[#262626] pl-3 text-sm font-medium dark:text-white dark:opacity-40 text-black" />
 							<div class="flex gap-[10px]">
 								<button @click="confirmDel = false"
-												class="hover-btn-false w-[88px] rounded-lg bg-white py-2 text-sm text-[#2d2d2d] transition">
+												class="hover-btn-false w-[88px] rounded-lg bg-white py-2 text-sm text-[#2d2d2d] transition border-neutral-300 border dark:border-0">
 									Отмена
 								</button>
 								<button @click="deleteItem"
@@ -104,15 +104,15 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.bg-style {
-	background: rgba(38, 38, 38, 0.9);
-}
-
 .hover-btn-true:hover {
 	box-shadow: 0 1px 11px 0px #fa7272;
 }
 
 .hover-btn-false:hover {
+	box-shadow: 0 1px 11px 0px #b3b3b3;
+}
+
+.dark .hover-btn-false:hover {
 	box-shadow: 0 1px 11px 0px #ffffff;
 }
 
